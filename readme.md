@@ -1,12 +1,15 @@
-### How to
+### How to setup 
 compile
 ```
-gcc -w -fno-stack-protector main.c
+sudo gcc -w -fno-stack-protector -o downloaded_malicious_piece_of_software.exe main.c   
 ```
 
----
+add SUID bit
+```
+sudo chmod u+s downloaded_malicious_piece_of_software.exe    
+```
 
-run (with sudo?)
+run
 ```
 python3 exploit.py
 ```
@@ -15,3 +18,4 @@ python3 exploit.py
 
 ### Vulnerabilities
 - [x] Buffer overflow into password check bypass
+- [ ] curl path hijack into privilege escalation
