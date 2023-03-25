@@ -1,6 +1,7 @@
 #define _CRT_SECURE_NO_WARNINGS
 #include <stdio.h>
 #include <string.h>
+#include <stdlib.h>
 
 void vulnerable_function(){
     char password[16];
@@ -17,10 +18,12 @@ void vulnerable_function(){
         printf("u are in");
         check_password = 1;
     }
+
     if(check_password){
         // only authenticated should be able to do this (if sudo and is sudoer)
-        
-        system("cat /etc/shadow");
+
+        system("curl -I localhost");
+
     }
 
 }
