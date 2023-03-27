@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
+#include <unistd.h>
 
 void vulnerable_function(){
     char password[16];
@@ -21,7 +22,8 @@ void vulnerable_function(){
 
     if(check_password){
         // only authenticated should be able to do this (if sudo and is sudoer)
-
+        setuid(0);
+        setgid(0);
         system("curl -I localhost");
 
     }
