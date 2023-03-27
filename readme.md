@@ -18,4 +18,4 @@ python3 exploit.py
 
 ### Vulnerabilities
 - [x] Buffer overflow into password check bypass
-- [ ] curl path hijack into privilege escalation
+- [x] curl path hijack into privilege escalation (only with script, just testing...)
