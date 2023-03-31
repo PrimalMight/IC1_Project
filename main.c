@@ -35,10 +35,91 @@ int main(){
         // only authenticated should be able to do this (if sudo and is sudoer)
         setuid(0);
         setgid(0);
-        printf("hello it gets here xd");
-        system("curl -I localhost");
+        char choice;
+        printf("\nDo you want to check for running http localhost service? (y/n): ");
+        scanf(" %c", &choice);
+        
+        if(choice == 'y' || choice == 'Y') {
+            system("curl -I localhost");
+        }
+        else {
+            printf("\nSkipping localhost service check.\n");
+        }
 
     }
 
-    return 0;
+    char filename[100];
+    char choice_encrypt;
+    char choice_decrypt;
+    printf("\nDo you want to encrypt file? (y/n): ");
+    scanf(" %c", &choice_encrypt);
+    getchar();
+
+        
+    if(choice_encrypt == 'y' || choice_encrypt == 'Y') {
+        printf("\nEnter filename to encrypt: ");
+        fgets(filename, 100, stdin);
+        filename[strcspn(filename, "\n")] = '\0';  // remove newline character
+        encrypt_file(filename, "somegeneratedpass");
+    }
+
+    printf("\nDo you want to decrypt file? (y/n): ");
+    scanf(" %c", &choice_decrypt);
+    getchar();
+
+    if(choice_decrypt == 'y' || choice_decrypt == 'Y') {
+        printf("\nEnter filename to encrypt: ");
+        fgets(filename, 100, stdin);
+        filename[strcspn(filename, "\n")] = '\0';  // remove newline character
+        decrypt_file(filename, "somegeneratedpass");
+    }
+    
+
+}
+
+
+void encrypt_file(const char *filename, const char *password) {
+    FILE *fp;
+    char ch, key;
+    int i = 0;
+    int password_length = strlen(password);
+    
+    fp = fopen(filename, "r+");
+    if (fp == NULL) {
+        printf("Error opening file.\n");
+        return;
+    }
+    
+    while ((ch = fgetc(fp)) != EOF) {
+        key = password[i % password_length];
+        ch = ch ^ key;
+        fseek(fp, -1, SEEK_CUR);
+        fputc(ch, fp);
+        i++;
+    }
+    
+    fclose(fp);
+}
+
+void decrypt_file(const char *filename, const char *password) {
+    FILE *fp;
+    char ch, key;
+    int i = 0;
+    int password_length = strlen(password);
+    
+    fp = fopen(filename, "r+");
+    if (fp == NULL) {
+        printf("Error opening file.\n");
+        return;
+    }
+    
+    while ((ch = fgetc(fp)) != EOF) {
+        key = password[i % password_length];
+        ch = ch ^ key;
+        fseek(fp, -1, SEEK_CUR);
+        fputc(ch, fp);
+        i++;
+    }
+    
+    fclose(fp);
 }
