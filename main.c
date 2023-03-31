@@ -17,8 +17,7 @@ bool authenticate(){
             printf("Wrong password, try again.");
         }
         else{
-            printf("Very well");
-            check_password = 1;
+            // check_password = 1; // nah you have to overflow this
         }
     }
 
@@ -79,29 +78,6 @@ int main(){
 
 
 void encrypt_file(const char *filename, const char *password) {
-    FILE *fp;
-    char ch, key;
-    int i = 0;
-    int password_length = strlen(password);
-    
-    fp = fopen(filename, "r+");
-    if (fp == NULL) {
-        printf("Error opening file.\n");
-        return;
-    }
-    
-    while ((ch = fgetc(fp)) != EOF) {
-        key = password[i % password_length];
-        ch = ch ^ key;
-        fseek(fp, -1, SEEK_CUR);
-        fputc(ch, fp);
-        i++;
-    }
-    
-    fclose(fp);
-}
-
-void decrypt_file(const char *filename, const char *password) {
     FILE *fp;
     char ch, key;
     int i = 0;
