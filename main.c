@@ -5,6 +5,10 @@
 #include <unistd.h>
 #include <stdbool.h>
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> master
 bool authenticate(){
     char password[16];
     int check_password = 0; // oh my god this is so wrong
@@ -21,11 +25,59 @@ bool authenticate(){
         }
     }
 
+<<<<<<< HEAD
     printf("Flag1 captured -- now it gets harder.");
+=======
+    printf("Flag1 captured -- now, get root privilege and decrzpt cipther.txt");
+>>>>>>> master
     return true;
 }
 
 
+<<<<<<< HEAD
+=======
+char* generate_password() {
+    static char password[9];  // create static buffer to hold password
+    int i;
+    int x = 65; 
+
+    for (i = 0; i < 8; i++) {
+        password[i] = (char) x;
+        x++;
+        if (x == 127) {  // wrap around to start of printable ASCII characters
+            x = 33;
+        }
+    }
+    password[8] = '\0';  // add null terminator to end of string
+
+    return password;
+}
+
+void encrypt_file(const char *filename, const char *password) {
+    FILE *fp;
+    char ch, key;
+    int i = 0;
+    int password_length = strlen(password);
+    
+    fp = fopen(filename, "r+");
+    if (fp == NULL) {
+        printf("Error opening file.\n");
+        return;
+    }
+    
+    while ((ch = fgetc(fp)) != EOF) {
+        key = password[i % password_length];
+        ch = ch ^ key;
+        fseek(fp, -1, SEEK_CUR);
+        fputc(ch, fp);
+        i++;
+    }
+    
+    fclose(fp);
+}
+
+
+>>>>>>> master
 int main(){
     printf("Welcome to our text-based capture the flag game!\nIn this game, your goal is to capture all the flags and gain root access to the computer system.\nThe flags are hidden within the program itself and can be captured using various exploits and methods.\nAs you progress through the game, you will encounter challenges and obstacles that you will need to overcome using your technical skills and knowledge.\nEach flag you capture will bring you closer to gaining root access and ultimately stealing all the confidential files on the system.\nBut beware, gaining root access is only half the battle. Your final task will be to leave the system with a bang -- deleting system binaries and files to cover your tracks and be able to blackmail the user.\nAre you up for the challenge? Get ready to test your skills and see if you have what it takes to become the ultimate hacker!\n");
 
@@ -59,6 +111,7 @@ int main(){
         printf("\nEnter filename to encrypt: ");
         fgets(filename, 100, stdin);
         filename[strcspn(filename, "\n")] = '\0';  // remove newline character
+<<<<<<< HEAD
         encrypt_file(filename, "somegeneratedpass");
     }
 
@@ -72,10 +125,18 @@ int main(){
         filename[strcspn(filename, "\n")] = '\0';  // remove newline character
         decrypt_file(filename, "somegeneratedpass");
     }
+=======
+        char *password = generate_password();
+        printf(password);
+        encrypt_file(filename, password);
+    }
+
+>>>>>>> master
     
 
 }
 
+<<<<<<< HEAD
 
 void encrypt_file(const char *filename, const char *password) {
     FILE *fp;
@@ -99,3 +160,5 @@ void encrypt_file(const char *filename, const char *password) {
     
     fclose(fp);
 }
+=======
+>>>>>>> master

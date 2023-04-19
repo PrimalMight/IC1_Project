@@ -1,2 +1,6 @@
+<<<<<<< HEAD
 	RPED
 M	
+=======
+cipher this plaintext
+>>>>>>> master
