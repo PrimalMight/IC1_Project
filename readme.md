@@ -3,20 +3,19 @@
 + This exploit game aims to learn some very basic linux comands and also some low *hacking* knowlage to collect all flags.
 + And also this is project for BPC-IC1.
 ## How to play
-### Initial setup
-compile
+### Initial setup:
++ compile
 ```bash
 sudo gcc -w -g -fno-stack-protector -o downloaded_malicious_piece_of_software.exe main.c   
 ```
-
-add SUID bit
++ add SUID bit
 ```bash
 sudo chmod u+s downloaded_malicious_piece_of_software.exe    
 ```
-### Game tutorial
-> Main file to exploit is called ``exploit_this``.
+### Game tutorial:
+> Main file to exploit is called ``exploit_this``. </br>
 > The secret information is stored in ``cipher.txt``.
-smthn smthn add later
+smthn smthn add later</br>
 
 ## BPC-IC1 things:
 
