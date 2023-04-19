@@ -1,14 +1,19 @@
 # Capture the hack
-## What is this "game"?
+### What is this "game"?
 + This exploit game aims to learn some very basic linux comands and also some low *hacking* knowlage to collect all flags.
 + And also this is project for BPC-IC1.
 ## How to play
 ### Initial setup:
-+ compile
++ Clone this repo and cd in its file:
+```bash
+git clone https://github.com/PrimalMight/IC1_Project.git
+smthn=`find $(pwd) -name 'IC1_Project'` && cd $smthn
+```
++ Compile totally legit SW:
 ```bash
 sudo gcc -w -g -fno-stack-protector -o downloaded_malicious_piece_of_software.exe main.c   
 ```
-+ add SUID bit
++ add SUID bit:
 ```bash
 sudo chmod u+s downloaded_malicious_piece_of_software.exe    
 ```
