@@ -102,7 +102,6 @@ int main(){
         fgets(filename, 100, stdin);
         filename[strcspn(filename, "\n")] = '\0';  // remove newline character
         char *password = generate_password();
-        printf(password);
         encrypt_file(filename, password);
     }
 
