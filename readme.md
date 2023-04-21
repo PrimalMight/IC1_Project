@@ -21,10 +21,10 @@ star the program with ``./<whatever_name_you_picked>``
 + **First flag: buffer overflow**
 	* After the program is started, player is asked for some password, well we dont know the password, se you need to find other way how to gain acces! </br>
 	<details>
-  <summary>Hint:</summary>
+ 	<summary><bold>Hint:</bold></summary>
 
   ```
-  :maybe try spam of ``A`` (somewhere between 1 and 50) ``1`` on the end?
+  Maybe try spam of ``A`` (somewhere between 1 and 50) ``1`` on the end?
   ```
 	</details>
 
