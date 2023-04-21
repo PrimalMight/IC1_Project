@@ -14,19 +14,20 @@ smthn=`find $(pwd) -name 'IC1_Project'` && cd $smthn
 sudo gcc -w -g -fno-stack-protector -o <whatever_name_you_want> main.c   
 ```
 ### Game tutorial:
-> Main file to exploit is called ``exploit_this``. </br>
-> The secret information is stored in ``cipher.txt``.
-smthn smthn add later</br>
-star the program with ``./<whatever_name_you_picked>``
-+ **First flag: buffer overflow**
-	* After the program is started, player is asked for some password, well we dont know the password, se you need to find other way how to gain acces! </br>
+Start the program with ``./<whatever_name_you_picked>``.
++ **First flag: Buffer overflow bypass the initial password check!**
+	* After the program is started, player is asked for some password, well we dont know the password, se you need to find other way how to gain acces! <br>
 	<details>
- 	<summary><bold>Hint:</bold></summary>
+ 	<summary>Hint here!</summary>
 
   ```
-  Maybe try spam of ``A`` (somewhere between 1 and 50) ``1`` on the end?
+  Maybe try spam of ``A`` (somewhere between 1 and 35) ``1`` on the end?
   ```
 	</details>
++ **Second flag:  Hijack the path for relative curl call in the program for shell and escalate privilege to root!**
+	* ``$ strings exploit_this`` to get information about the compiled file. <br>
+	* ``$ curl -I localhost`` - curl is calledwithout full path using $PATH variable! <br>
+	* So you need to hijack the curl path and substitute curl for shell. <br>
 
 
 ## BPC-IC1 things:
