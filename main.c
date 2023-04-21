@@ -60,7 +60,6 @@ char* generate_password() {
 }
 
 bool isEncrypted(FILE* file){
-	printf("\nMAKING SURE THIS WORKS\n");
 	if(NULL==file){
 		printf("Internal error, file was supposed to exist :(\n");
 		exit(1);
@@ -81,10 +80,10 @@ bool isEncrypted(FILE* file){
 	bool value = c == '\n';
 
 	if(value) {
-		printf("\njsou identicke");
+		printf("\nSystem can encrypt file!");
 		return false;
 	} else {
-		printf("\nnenenenenene nejsou");
+		printf("\nSystem Cannot encrypt file!");
 		return true;
 	}
 }
