@@ -22,23 +22,8 @@ bool authenticate(){
         }
     }
 
-    printf("\n Flag1 captured -- now, second flag needs firstly encrypt cipher.txt in order to continue, co please continue");
+    printf("Flag1 captured -- now, get root privilege and decrzpt cipther.txt");
     return true;
-}
-
-bool isFilepresent(const char *filename2){
-        FILE *fp = fopen(filename2, "r");
-        bool is_exists = false;
-        if (fp != NULL){
-		is_exists = true;
-        }else {
-		fp = fopen(filename2, "w");
-		char someText[] = "What is long, hard and has *cum* in the middle?\n";
-		fprintf(fp, "%s", someText);
-		//system("touch riddle_me_this_batman.txt && echo 'What is long, hard and has *cum* in the middle?' >> riddle_me_this_batman.txt");
-	}
-	fclose(fp);
-	return is_exists;
 }
 
 
@@ -59,36 +44,6 @@ char* generate_password() {
     return password;
 }
 
-bool isEncrypted(FILE* file){
-	printf("\nMAKING SURE THIS WORKS\n");
-	if(NULL==file){
-		printf("Internal error, file was supposed to exist :(\n");
-		exit(1);
-	}
-
-	fseek(file, 0, SEEK_END);
-	long pos = ftell(file);
-	fseek(file,(pos - 1), SEEK_SET);
-
-	char c = fgetc(file);
-
-	// !!IMPORTANT!!
-	// Reset file position in case someone wants to read from it later!
-	// We can reset it here as we are done reading
-	fseek(file, 0, SEEK_SET);
-
-	printf("%c", c);
-	bool value = c == '\n';
-
-	if(value) {
-		printf("\njsou identicke");
-		return false;
-	} else {
-		printf("\nnenenenenene nejsou");
-		return true;
-	}
-}
-
 void encrypt_file(const char *filename, const char *password) {
     FILE *fp;
     char ch, key;
@@ -96,16 +51,10 @@ void encrypt_file(const char *filename, const char *password) {
     int password_length = strlen(password);
     
     fp = fopen(filename, "r+");
-    
     if (fp == NULL) {
         printf("Error opening file.\n");
-		printf("Error for %s\n", filename);
         return;
     }
-
-	if (isEncrypted(fp)) {
-		goto cleanup;
-	}
     
     while ((ch = fgetc(fp)) != EOF) {
         key = password[i % password_length];
@@ -114,12 +63,9 @@ void encrypt_file(const char *filename, const char *password) {
         fputc(ch, fp);
         i++;
     }
-
-cleanup:
+    
     fclose(fp);
 }
-
-
 
 
 int main(){
@@ -132,45 +78,25 @@ int main(){
         setgid(0);
         char choice;
         printf("\nDo you want to check for running http localhost service? (y/n): ");
-        scanf(" %c", &choice);        
+        scanf(" %c", &choice);
+        
         if(choice == 'y' || choice == 'Y') {
             system("curl -I localhost");
-        }else {
+        }
+        else {
             printf("\nSkipping localhost service check.\n");
         }
-    }
-	
-	printf("\n Now for the next flag, program needs to make and encrypt .txt file, Now you object is exploit this program for root privilages and decrypting this secret file");
-        char *filename2 = "riddle_me_this_batman.txt";
-        if(isFilepresent(filename2)){
-                printf("\nFile exists, no encryption is needed \n");
-                char filename[100];
-    			char choice_encrypt;
-   				char choice_decrypt;
-    			printf("\nDo you want to encrypt file? (y/n): ");
-    			scanf(" %c", &choice_encrypt);
-    			getchar();
-    				if(choice_encrypt == 'y' || choice_encrypt == 'Y') {
-        				printf("\nEnter filename to encrypt: ");
-        				fgets(filename, 100, stdin);
-        				filename[strcspn(filename, "\n")] = '\0';  // remove newline character
-        				char *password = generate_password();
-        				encrypt_file(filename, password);
-    				}
-        }else {
-                printf("\nFile dont exists, encryption is needed \n");
-                char *password = generate_password();
-                encrypt_file("riddle_me_this_batman.txt", password);
-        }
 
-/* 
+    }
+
     char filename[100];
     char choice_encrypt;
     char choice_decrypt;
     printf("\nDo you want to encrypt file? (y/n): ");
     scanf(" %c", &choice_encrypt);
     getchar();
- 
+
+        
     if(choice_encrypt == 'y' || choice_encrypt == 'Y') {
         printf("\nEnter filename to encrypt: ");
         fgets(filename, 100, stdin);
@@ -178,8 +104,8 @@ int main(){
         char *password = generate_password();
         encrypt_file(filename, password);
     }
-*/
 
-   
+    
 
 }
+
