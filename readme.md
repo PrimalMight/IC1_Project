@@ -20,12 +20,13 @@ smthn smthn add later</br>
 star the program with ``./<whatever_name_you_picked>``
 + **First flag: buffer overflow**
 	* After the program is started, player is asked for some password, well we dont know the password, se you need to find other way how to gain acces! </br>
-	> hint: >! Spoiler maybe try spam of ``A`` (somewhere between 1 and 50) ``1`` on the end? 
->! smthn smthn
->! Spoiler
+	> hint:maybe try spam of ``A`` (somewhere between 1 and 50) ``1`` on the end? 
+
 
 ## BPC-IC1 things:
 
 ### Vulnerabilities
 - [x] Buffer overflow into password check bypass
 - [x] curl path hijack into privilege escalation (only with script, just testing...)
+
+>! Spoiler text
