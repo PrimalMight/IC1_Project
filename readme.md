@@ -4,6 +4,8 @@
 + And also this is project for BPC-IC1.
 ## How to play
 ### Initial setup:
+- We recommend doing this on some virtual machine (manjaro for example).
+- And also for the compiling, player needs to know the root password (but later on player tryes to bypass it).
 + Clone this repo and cd in its file:
 ```bash
 git clone https://github.com/PrimalMight/IC1_Project.git
