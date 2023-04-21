@@ -10,7 +10,7 @@ int main(){
 
     fgets(key, 100, stdin);
     key[strcspn(key, "\n")] = '\0';  // remove newline character
-    decrypt_file("cipher.txt", key);
+    decrypt_file("riddle_me_this_batman.txt", key);
 
 }
 void decrypt_file(const char *filename, const char *password) {
