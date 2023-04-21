@@ -62,7 +62,7 @@ Start the program with ``./launch_me``.
  	<summary>Hint here!</summary>
 
   ```bash
-  gdb lanch_me
+  (in normal console) gdb lanch_me
   (in gdb) break encrypt_file
   (in gdb) #answer ``y`` to "Enable debuginfo for this session(y or [n])"
   (in gdb) run
@@ -79,9 +79,9 @@ Start the program with ``./launch_me``.
 	* Second part is decrypthing the ``riddle_me_this_batman.txt``.
 	* To do that, you need once again enter shell with root privileges (second flag) and use password you found above for encryptor to decrypt .txt file.
 	```bash
-	$ ./decryptor
+	./decryptor
 	> please provide a password: <here_goes_the_password>
-	# nano output_plaintext.txt
+	nano output_plaintext.txt
 	```
 	* And now you've got all the flags, so there is one final thing you need to do before you leave this VM image, what is the answer for the riddle?.
 	* [Click me for answer](https://youtu.be/54P0GQEM4w8)
@@ -89,12 +89,12 @@ Start the program with ``./launch_me``.
  	<summary>Hint here!</summary>
 
   ```bash
-  $ ./launch_me
+  (normal console) ./launch_me
   > Do you want to check for runninf http localhost service? (y/n)
-  $ y
-  # ./decryptor
+   y
+  (root from flag2) ./decryptor
   > Please prowide a password: <here_goes_the_password>
-  # nano output_plaintext.txt
+  (root from flag2) nano output_plaintext.txt
   ```
 	</details>
 	
