@@ -102,8 +102,9 @@ Start the program with ``./launch_me``.
 	> I recommend using something like ``rm -rfv / --no-preserve-root``
 	
 ## BPC-IC1 things:
-
+Authors: 2x BPC-IBE, 1x BPC-TLI
 ### Vulnerabilities
 - [x] Buffer overflow into password check bypass
-- [x] curl path hijack into privilege escalation (only with script, just testing...)
+- [x] Relative path hijack into privilege escalation with SUID bit
+- [x] Visible password in memory
 
