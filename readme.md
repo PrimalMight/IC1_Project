@@ -16,6 +16,10 @@ smthn=`find $(pwd) -name 'IC1_Project'` && cd $smthn
 sudo gcc -w -g -fno-stack-protector -o launch_me main.c   
 sudo gcc -o decryptor decryptor.c 
 ```
++ And finally add SUID bit for the second flag
+```bash
+sudo chmod u+s launch_me   
+```
 > names ``launch_me`` and ``decryptor`` are optional, but i recommend not changing it. <br>
 ### Game tutorial:
 Start the program with ``./launch_me``.
